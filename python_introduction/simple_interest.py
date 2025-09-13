@@ -1,8 +1,9 @@
-principle = 1000
+principal = 1000
 rate = 0.05
 time = 3
 
-interest = principle * rate * time
+interest = principal * rate * time
 
-print(f"the simple interest is : {interest}")
+print(f"The simple interest is: {interest}")
+
 
