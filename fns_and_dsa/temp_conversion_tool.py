@@ -1,23 +1,35 @@
-from datetime import datetime, timedelta
+FAHRENHEIT_TO_CELSIUS_FACTOR = 5/9
+CELSIUS_TO_FAHRENHEIT_FACTOR = 9/5
 
-def display_current_datetime():
-    # Save current date and time
-    current_date = datetime.now()
-    # Format as "YYYY-MM-DD HH:MM:SS"
-    print("Current date and time:", current_date.strftime("%Y-%m-%d %H:%M:%S"))
+def celsius_to_fahrenheit(celsius):
+    """Convert Celsius to Fahrenheit"""
+    return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
 
-def calculate_future_date():
-    # Ask user for number of days
-    days = int(input("Enter the number of days to add to the current date: "))
-    # Save future date
-    future_date = datetime.now() + timedelta(days=days)
-    # Format as "YYYY-MM-DD"
-    print("Future date:", future_date.strftime("%Y-%m-%d"))
+def fahrenheit_to_celsius(fahrenheit):
+    """Convert Fahrenheit to Celsius"""
+    return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
 
 def main():
-    display_current_datetime()
-    calculate_future_date()
+    print("Temperature Conversion Tool")
+    print("1. Celsius to Fahrenheit")
+    print("2. Fahrenheit to Celsius")
+
+    choice = input("Enter your choice (1 or 2): ")
+
+    try:
+        if choice == '1':
+            celsius = float(input("Enter temperature in Celsius: "))
+            fahrenheit = celsius_to_fahrenheit(celsius)
+            print(f"{celsius}°C is equal to {fahrenheit:.2f}°F")
+        elif choice == '2':
+            fahrenheit = float(input("Enter temperature in Fahrenheit: "))
+            celsius = fahrenheit_to_celsius(fahrenheit)
+            print(f"{fahrenheit}°F is equal to {celsius:.2f}°C")
+        else:
+            print("Invalid choice. Please enter 1 or 2.")
+    except ValueError:
+        print("Invalid input. Please enter a numeric value.")
 
 if __name__ == "__main__":
     main()
- 
+  
